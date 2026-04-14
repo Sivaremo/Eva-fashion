@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EVA FASHION — Where Elegance Meets Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ── CSS Variables ─────────────────────────────────────────────── */
+:root{
+  --ink:#0A0806;
+  --cream:#F5F0E8;
+  --cream2:#EDE8DC;
+  --warm:#BFA98A;
+  --gold:#C9A84C;
+  --gold2:#E8C96A;
+  --blush:#D4A5A5;
+  --charcoal:#1C1814;
+  --ash:#6B6057;
+  --pale:#FAF7F2;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Montserrat',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;cursor:none}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);overflow-x:hidden;line-height:1}
+
+/* ── Custom Cursor ─────────────────────────────────────────────── */
+.cursor{position:fixed;pointer-events:none;z-index:99999}
+.cursor-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:difference}
+.cursor-ring{width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:all .18s cubic-bezier(.16,1,.3,1);mix-blend-mode:difference}
+.cursor-ring.hovered{width:60px;height:60px;border-color:var(--gold2);background:rgba(201,168,76,.08)}
+
+/* ── Noise Texture Overlay ─────────────────────────────────────── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.6}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--charcoal)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* ── Animations ────────────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes revealUp{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0% 0 0 0)}}
+@keyframes scaleIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes lineScan{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes ticker{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.97)}}
+@keyframes typewriter{from{width:0}to{width:100%}}
+@keyframes catwalk{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.3)}50%{box-shadow:0 0 50px rgba(201,168,76,.6)}}
+
+/* ── NAV ───────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:24px 60px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;background:transparent}
+nav.scrolled{background:rgba(10,8,6,.92);backdrop-filter:blur(20px);padding:16px 60px;border-bottom:1px solid rgba(201,168,76,.15)}
+.nav-logo{font-family:var(--serif);font-size:28px;font-weight:700;letter-spacing:8px;color:var(--cream);text-decoration:none;text-transform:uppercase}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{color:rgba(245,240,232,.65);font-size:10px;font-weight:600;letter-spacing:3px;text-decoration:none;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{right:0}
+.nav-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 28px;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:var(--sans)}
+.nav-btn:hover{background:var(--gold);color:var(--ink)}
+
+/* ── HERO ──────────────────────────────────────────────────────── */
+#hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0A0806 0%,#1C1511 40%,#0F0C08 100%)}
+.hero-bg::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(180deg,rgba(201,168,76,.04) 0%,transparent 100%);clip-path:polygon(15% 0,100% 0,100% 100%,0 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.4) 30%,rgba(0,0,0,.4) 70%,transparent)}
+.hero-content{position:relative;z-index:2;padding:0 60px;max-width:780px;margin-top:60px}
+.hero-eyebrow{font-size:9px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:16px;animation:fadeUp .8s .2s both}
+.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold)}
+.hero-title{font-family:var(--serif);font-size:clamp(72px,9vw,130px);font-weight:300;line-height:.92;letter-spacing:-2px;margin-bottom:32px;overflow:hidden}
+.hero-title-line{display:block;animation:revealUp .9s cubic-bezier(.16,1,.3,1) both}
+.hero-title-line:nth-child(1){animation-delay:.3s}
+.hero-title-line:nth-child(2){animation-delay:.5s;padding-left:80px;font-style:italic;color:var(--gold)}
+.hero-title-line:nth-child(3){animation-delay:.7s}
+.hero-sub{font-size:11px;letter-spacing:4px;color:var(--warm);text-transform:uppercase;margin-bottom:48px;animation:fadeUp .8s .9s both;line-height:2}
+.hero-ctas{display:flex;gap:20px;animation:fadeUp .8s 1.1s both}
+.btn-primary{background:var(--gold);color:var(--ink);padding:16px 44px;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--sans);transition:all .3s;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--gold2);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:0}
+.btn-primary:hover::before{transform:scaleX(1)}
+.btn-primary span{position:relative;z-index:1}
+.btn-outline{background:transparent;color:var(--cream);padding:16px 44px;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;border:1px solid rgba(245,240,232,.3);cursor:pointer;font-family:var(--sans);transition:all .3s}
+.btn-outline:hover{border-color:var(--cream);background:rgba(245,240,232,.06)}
+.hero-image-col{position:absolute;right:0;top:0;width:45%;height:100%;overflow:hidden}
+.hero-img-wrap{width:100%;height:100%;position:relative}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:contrast(1.1) brightness(.88);animation:scaleIn 1.4s .2s both}
+.hero-img-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:200px;background:linear-gradient(to right,var(--ink),transparent);z-index:1}
+.hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--ink) 0%,transparent 50%);z-index:1}
+.hero-stat-strip{position:absolute;bottom:48px;left:60px;right:0;display:flex;gap:60px;z-index:3;animation:fadeUp .8s 1.3s both}
+.stat-item{text-align:left}
+.stat-num{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--gold);line-height:1}
+.stat-label{font-size:8px;letter-spacing:4px;color:var(--ash);text-transform:uppercase;margin-top:4px}
+.scroll-indicator{position:absolute;bottom:40px;right:60px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;animation:fadeUp 1s 1.5s both}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold));animation:float 2s ease-in-out infinite}
+.scroll-text{font-size:8px;letter-spacing:4px;color:var(--warm);text-transform:uppercase;transform:rotate(90deg);transform-origin:center;white-space:nowrap}
+
+/* ── TICKER ────────────────────────────────────────────────────── */
+.ticker-wrap{background:var(--gold);padding:12px 0;overflow:hidden;position:relative;z-index:10}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 28s linear infinite}
+.ticker-item{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--ink);padding:0 40px}
+.ticker-sep{color:rgba(10,8,6,.4);font-size:14px}
+
+/* ── SECTION COMMONS ───────────────────────────────────────────── */
+section{padding:120px 60px}
+.section-eyebrow{font-size:9px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:16px}
+.section-eyebrow::before{content:'';display:inline-block;width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(42px,5vw,72px);font-weight:300;line-height:1.05;letter-spacing:-1px;color:var(--cream)}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-divider{width:60px;height:1px;background:var(--gold);margin:32px 0}
+
+/* ── ABOUT ─────────────────────────────────────────────────────── */
+#about{background:var(--charcoal);position:relative;overflow:hidden}
+#about::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06),transparent 70%);pointer-events:none}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;max-width:1200px}
+.about-text p{font-size:15px;line-height:1.85;color:rgba(245,240,232,.6);margin-bottom:20px}
+.about-text p strong{color:var(--cream);font-weight:600}
+.about-quote{border-left:2px solid var(--gold);padding-left:24px;margin:32px 0}
+.about-quote blockquote{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--gold);line-height:1.4}
+.about-image-mosaic{position:relative;height:600px}
+.mosaic-img{position:absolute;overflow:hidden;border:1px solid rgba(201,168,76,.15)}
+.mosaic-1{top:0;left:0;width:55%;height:65%;z-index:2}
+.mosaic-2{bottom:0;right:0;width:60%;height:60%;z-index:2}
+.mosaic-3{top:40%;left:25%;width:40%;height:40%;z-index:3;border:2px solid rgba(201,168,76,.3)}
+.mosaic-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:all .6s}
+.mosaic-img:hover img{transform:scale(1.06);filter:brightness(1)}
+.gold-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);padding:8px 20px;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-right:10px;margin-bottom:10px}
+
+/* ── SERVICES ──────────────────────────────────────────────────── */
+#services{background:var(--ink);position:relative}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:70px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.service-card{background:var(--charcoal);padding:50px 40px;position:relative;overflow:hidden;cursor:pointer;transition:all .4s;border:1px solid rgba(201,168,76,.08);group:true}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--gold2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:#201A14;transform:translateY(-4px)}
+.service-number{font-family:var(--serif);font-size:72px;font-weight:300;color:rgba(201,168,76,.12);line-height:1;margin-bottom:20px;transition:color .4s}
+.service-card:hover .service-number{color:rgba(201,168,76,.25)}
+.service-name{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--cream);margin-bottom:14px;letter-spacing:-0.5px}
+.service-desc{font-size:12px;line-height:1.8;color:rgba(245,240,232,.5);margin-bottom:24px}
+.service-arrow{font-size:20px;color:var(--gold);opacity:0;transform:translateX(-10px);transition:all .4s}
+.service-card:hover .service-arrow{opacity:1;transform:translateX(0)}
+.service-tag{display:inline-block;font-size:8px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,.3);padding:4px 12px;margin-bottom:16px}
+
+/* ── SHOWS ─────────────────────────────────────────────────────── */
+#shows{background:var(--charcoal);position:relative;overflow:hidden}
+.shows-intro{max-width:700px;margin-bottom:80px}
+.shows-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.show-card{position:relative;overflow:hidden;cursor:pointer;group:true;aspect-ratio:3/4;background:var(--ink)}
+.show-card-img{width:100%;height:100%;object-fit:cover;transition:all .7s;filter:brightness(.7) contrast(1.1)}
+.show-card:hover .show-card-img{transform:scale(1.08);filter:brightness(.5)}
+.show-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.3) 50%,transparent 100%);transition:all .4s}
+.show-card:hover .show-card-overlay{background:linear-gradient(to top,rgba(10,8,6,.98) 0%,rgba(10,8,6,.7) 60%,rgba(201,168,76,.08) 100%)}
+.show-card-content{position:absolute;bottom:0;left:0;right:0;padding:36px;z-index:2}
+.show-badge{display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.show-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+.show-title{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:8px;line-height:1.1}
+.show-meta{font-size:10px;letter-spacing:2px;color:var(--warm);text-transform:uppercase;margin-bottom:20px}
+.show-desc{font-size:12px;line-height:1.7;color:rgba(245,240,232,.65);max-height:0;overflow:hidden;transition:max-height .5s,opacity .4s;opacity:0}
+.show-card:hover .show-desc{max-height:100px;opacity:1}
+.show-cta{display:inline-flex;align-items:center;gap:10px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:16px;opacity:0;transform:translateY(10px);transition:all .4s .1s;border-bottom:1px solid transparent;padding-bottom:2px}
+.show-card:hover .show-cta{opacity:1;transform:translateY(0);border-bottom-color:var(--gold)}
+.show-card-large{grid-column:span 2;aspect-ratio:16/7}
+.show-card-large .show-card-img{object-position:center 30%}
+.show-card-large .show-title{font-size:52px}
+
+/* ── MODELS ────────────────────────────────────────────────────── */
+#models{background:var(--ink)}
+.models-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:70px}
+.models-slider{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.model-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3}
+.model-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9);transition:all .6s}
+.model-card:hover img{transform:scale(1.06);filter:brightness(.6) saturate(1)}
+.model-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.9) 0%,transparent 60%);transition:all .4s}
+.model-card:hover .model-overlay{background:linear-gradient(to top,rgba(10,8,6,.98) 0%,rgba(10,8,6,.4) 70%,transparent 100%)}
+.model-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2}
+.model-name{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);margin-bottom:4px}
+.model-title{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.model-stats{display:flex;gap:16px;margin-top:12px;opacity:0;transform:translateY(8px);transition:all .4s}
+.model-card:hover .model-stats{opacity:1;transform:translateY(0)}
+.model-stat{font-size:9px;color:rgba(245,240,232,.6);letter-spacing:1px}
+
+/* ── CATWALK STRIP ─────────────────────────────────────────────── */
+#catwalk{background:var(--charcoal);padding:60px 0;overflow:hidden;position:relative}
+#catwalk::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:.3}
+.catwalk-track{display:flex;gap:0;width:max-content;animation:catwalk 35s linear infinite}
+.catwalk-item{padding:0 50px;white-space:nowrap;font-family:var(--serif);font-size:clamp(42px,5vw,72px);font-weight:300;color:rgba(245,240,232,.07);letter-spacing:4px;transition:color .3s;cursor:default}
+.catwalk-item.highlight{color:rgba(201,168,76,.35);font-style:italic}
+
+/* ── GALLERY ───────────────────────────────────────────────────── */
+#gallery{background:var(--ink);padding:120px 0}
+.gallery-header{padding:0 60px;margin-bottom:60px;display:flex;justify-content:space-between;align-items:flex-end}
+.gallery-masonry{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:auto;gap:4px;padding:0 60px}
+.gallery-item{overflow:hidden;cursor:pointer;position:relative;background:var(--charcoal)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(.9);transition:all .6s;display:block}
+.gallery-item:hover img{transform:scale(1.08);filter:brightness(.6) saturate(1.2)}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-item:nth-child(4){grid-column:span 2}
+.gallery-item:nth-child(7){grid-column:span 2;grid-row:span 2}
+.gallery-item:nth-child(9){grid-column:span 2}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(10,8,6,.8));opacity:0;transition:opacity .4s}
+.gallery-item:hover .gallery-caption{opacity:1}
+.gallery-caption-text{font-size:10px;letter-spacing:2px;color:var(--cream);text-transform:uppercase}
+
+/* ── PRESS / TESTIMONIALS ──────────────────────────────────────── */
+#press{background:var(--charcoal);padding:100px 60px}
+.press-logos{display:flex;justify-content:space-between;align-items:center;gap:40px;margin-bottom:80px;padding:40px;border:1px solid rgba(201,168,76,.12);background:rgba(201,168,76,.03)}
+.press-logo{font-family:var(--serif);font-size:clamp(18px,2.5vw,28px);font-weight:300;color:rgba(245,240,232,.2);letter-spacing:6px;text-transform:uppercase;transition:color .3s;cursor:default}
+.press-logo:hover{color:rgba(245,240,232,.7)}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.testimonial{padding:40px;border:1px solid rgba(201,168,76,.1);position:relative;transition:border-color .4s}
+.testimonial:hover{border-color:rgba(201,168,76,.3)}
+.testimonial::before{content:'"';position:absolute;top:20px;left:30px;font-family:var(--serif);font-size:80px;color:rgba(201,168,76,.15);line-height:1}
+.testimonial-text{font-family:var(--serif);font-size:16px;font-style:italic;line-height:1.7;color:rgba(245,240,232,.75);margin-bottom:24px;position:relative;z-index:1}
+.testimonial-author{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.testimonial-role{font-size:10px;color:var(--ash);margin-top:4px}
+
+/* ── CONTACT ───────────────────────────────────────────────────── */
+#contact{background:var(--ink);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(201,168,76,.04) 0%,transparent 50%);pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;max-width:1200px}
+.contact-info .big-email{font-family:var(--serif);font-size:clamp(24px,3.5vw,48px);font-weight:300;color:var(--gold);margin:24px 0;word-break:break-all;line-height:1.2;text-decoration:none;display:block;transition:opacity .3s}
+.contact-info .big-email:hover{opacity:.7}
+.contact-detail{display:flex;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(201,168,76,.1)}
+.contact-detail-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);width:80px;flex-shrink:0;padding-top:3px}
+.contact-detail-value{font-size:14px;color:rgba(245,240,232,.75);line-height:1.6}
+.contact-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.form-group{position:relative;margin-bottom:20px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(245,240,232,.15);padding:14px 0;font-size:13px;color:var(--cream);font-family:var(--sans);outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(245,240,232,.3);font-size:12px;letter-spacing:1px}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-bottom-color:var(--gold)}
+.form-group textarea{height:100px;resize:none}
+.form-group select option{background:var(--charcoal);color:var(--cream)}
+.form-label{position:absolute;top:14px;left:0;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,.3);transition:all .3s;pointer-events:none}
+.form-group input:focus~.form-label,.form-group input:not(:placeholder-shown)~.form-label,.form-group textarea:focus~.form-label{top:-8px;font-size:8px;color:var(--gold)}
+.form-line{position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .4s}
+.form-group input:focus~.form-line,.form-group textarea:focus~.form-line{width:100%}
+.submit-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:18px 60px;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;cursor:pointer;font-family:var(--sans);transition:all .4s;position:relative;overflow:hidden;margin-top:16px}
+.submit-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:0}
+.submit-btn:hover::before{transform:scaleX(1)}
+.submit-btn:hover{color:var(--ink)}
+.submit-btn span{position:relative;z-index:1}
+
+/* ── FOOTER ────────────────────────────────────────────────────── */
+footer{background:var(--charcoal);padding:60px 60px 40px;border-top:1px solid rgba(201,168,76,.12)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-brand .logo-text{font-family:var(--serif);font-size:32px;font-weight:700;letter-spacing:6px;color:var(--cream);text-transform:uppercase}
+.footer-brand .logo-text span{color:var(--gold)}
+.footer-tagline{font-size:11px;color:rgba(245,240,232,.35);margin-top:12px;letter-spacing:2px;line-height:1.8}
+.footer-social{display:flex;gap:16px;margin-top:32px}
+.social-link{width:40px;height:40px;border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;color:var(--ash);font-size:13px;text-decoration:none;transition:all .3s;font-weight:600}
+.social-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
+.footer-col h4{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:12px}
+.footer-col ul li a{font-size:12px;color:rgba(245,240,232,.45);text-decoration:none;letter-spacing:1px;transition:color .3s;display:inline-flex;align-items:center;gap:8px}
+.footer-col ul li a::before{content:'—';font-size:10px;color:rgba(201,168,76,.3);transition:color .3s}
+.footer-col ul li a:hover{color:var(--cream)}
+.footer-col ul li a:hover::before{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:32px;border-top:1px solid rgba(245,240,232,.07);font-size:10px;color:rgba(245,240,232,.25);letter-spacing:2px}
+
+/* ── AD POPUP ──────────────────────────────────────────────────── */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .5s}
+.popup-overlay.active{opacity:1;pointer-events:all}
+.popup-box{background:var(--charcoal);border:1px solid rgba(201,168,76,.25);max-width:900px;width:100%;position:relative;animation:modalIn .5s cubic-bezier(.16,1,.3,1) both;overflow:hidden;max-height:90vh;display:flex;flex-direction:column}
+.popup-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),var(--gold2),transparent)}
+.popup-close{position:absolute;top:16px;right:16px;z-index:10;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .3s}
+.popup-close:hover{background:var(--gold);color:var(--ink)}
+.popup-content{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;flex:1}
+.popup-image{position:relative;overflow:hidden;min-height:400px}
+.popup-image img{width:100%;height:100%;object-fit:cover;filter:brightness(.75);transition:transform 6s}
+.popup-overlay.active .popup-image img{transform:scale(1.08)}
+.popup-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--charcoal))}
+.popup-body{padding:50px 44px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto}
+.popup-badge{display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;animation:fadeUp .6s .3s both}
+.popup-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+.popup-title{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:10px;animation:fadeUp .6s .4s both;letter-spacing:-0.5px}
+.popup-title em{color:var(--gold);font-style:italic}
+.popup-subtitle{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);margin-bottom:24px;animation:fadeUp .6s .5s both}
+.popup-desc{font-size:13px;line-height:1.8;color:rgba(245,240,232,.6);margin-bottom:28px;animation:fadeUp .6s .6s both}
+.popup-details{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px;animation:fadeUp .6s .7s both}
+.popup-detail-item{padding:12px 14px;border:1px solid rgba(201,168,76,.12);background:rgba(201,168,76,.04)}
+.popup-detail-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.popup-detail-value{font-size:12px;color:rgba(245,240,232,.8);font-weight:500}
+.popup-ctas{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .6s .8s both}
+.popup-cta-primary{background:var(--gold);color:var(--ink);padding:13px 28px;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--sans);transition:all .3s;flex:1;min-width:140px}
+.popup-cta-primary:hover{background:var(--gold2)}
+.popup-cta-outline{background:transparent;color:var(--cream);padding:13px 28px;font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(245,240,232,.25);cursor:pointer;font-family:var(--sans);transition:all .3s;flex:1;min-width:140px}
+.popup-cta-outline:hover{border-color:var(--cream)}
+.popup-skip{font-size:9px;letter-spacing:2px;color:rgba(245,240,232,.25);text-transform:uppercase;cursor:pointer;margin-top:16px;display:inline-block;transition:color .3s;text-align:center}
+.popup-skip:hover{color:rgba(245,240,232,.5)}
+.popup-tabs{display:flex;gap:0;border-bottom:1px solid rgba(201,168,76,.12);margin-bottom:0}
+.popup-tab{flex:1;padding:10px 16px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,.3);cursor:pointer;transition:all .3s;border-bottom:2px solid transparent;margin-bottom:-1px;text-align:center;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--sans)}
+.popup-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.popup-tab-content{padding-top:24px;display:none}
+.popup-tab-content.active{display:block;animation:fadeIn .3s both}
+/* Countdown */
+.popup-countdown{display:flex;gap:16px;margin-bottom:24px}
+.countdown-unit{text-align:center;flex:1}
+.countdown-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--gold);line-height:1;display:block}
+.countdown-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ash)}
+
+/* ── FLOATING ADS ──────────────────────────────────────────────── */
+.float-ad{position:fixed;z-index:800;cursor:pointer;transition:all .4s;border:1px solid rgba(201,168,76,.25);background:rgba(28,21,14,.95);backdrop-filter:blur(20px);overflow:hidden}
+.float-ad::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.float-ad-right{right:20px;bottom:20px;width:280px;padding:20px;animation:slideLeft .6s 3s both}
+.float-ad-close{position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(245,240,232,.4);font-size:12px;cursor:pointer;line-height:1;transition:color .2s;padding:4px}
+.float-ad-close:hover{color:var(--gold)}
+.float-ad-badge{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.float-ad-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;display:block}
+.float-ad-title{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream);margin-bottom:6px;line-height:1.2}
+.float-ad-sub{font-size:10px;color:var(--ash);margin-bottom:14px;letter-spacing:1px;line-height:1.5}
+.float-ad-img{width:100%;height:120px;object-fit:cover;margin-bottom:14px;filter:brightness(.8)}
+.float-ad-cta{width:100%;background:var(--gold);color:var(--ink);border:none;padding:10px;font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:var(--sans);transition:background .3s}
+.float-ad-cta:hover{background:var(--gold2)}
+
+/* ── REVEAL ANIMATIONS ─────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.revealed{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.revealed{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.95);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.revealed{opacity:1;transform:scale(1)}
+
+/* ── RESPONSIVE ────────────────────────────────────────────────── */
+@media(max-width:1024px){
+  nav{padding:20px 30px}
+  section{padding:80px 30px}
+  .hero-content{padding:0 30px}
+  .hero-stat-strip{left:30px}
+  .scroll-indicator{right:30px}
+  .hero-title{font-size:clamp(52px,8vw,100px)}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .models-slider{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .gallery-masonry{padding:0 30px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  nav.scrolled{padding:12px 20px}
+  .nav-links{display:none}
+  section{padding:60px 20px}
+  .hero-content{padding:0 20px;margin-top:80px}
+  .hero-image-col{opacity:.25}
+  .hero-stat-strip{left:20px;gap:30px}
+  .hero-stat-strip .stat-num{font-size:28px}
+  .about-grid,.shows-grid,.contact-grid{grid-template-columns:1fr}
+  .show-card-large{grid-column:span 1;aspect-ratio:3/4}
+  .models-slider{grid-template-columns:1fr 1fr}
+  .gallery-masonry{grid-template-columns:repeat(2,1fr)}
+  .gallery-item:nth-child(1),.gallery-item:nth-child(4),.gallery-item:nth-child(7),.gallery-item:nth-child(9){grid-column:span 1;grid-row:span 1}
+  .testimonials{grid-template-columns:1fr}
+  .popup-content{grid-template-columns:1fr}
+  .popup-image{display:none}
+  .services-header{flex-direction:column;gap:20px;align-items:flex-start}
+  .services-grid{grid-template-columns:1fr}
+  .press-logos{flex-wrap:wrap;gap:20px}
+  .float-ad-right{width:220px;right:10px;bottom:10px}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .models-intro{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── CUSTOM CURSOR ─────────────────────────────────────────────── -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAVIGATION ────────────────────────────────────────────────── -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">Eva<span>.</span> Fashion</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#shows">Shows</a></li>
+    <li><a href="#models">Models</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn" onclick="openPopup('runway')">Book a Show</button>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Est. 2009 · Paris · Milan · New York</div>
+    <h1 class="hero-title">
+      <span class="hero-title-line">Where</span>
+      <span class="hero-title-line">Elegance</span>
+      <span class="hero-title-line">Meets Vision</span>
+    </h1>
+    <p class="hero-sub">International Fashion Modeling · Runway Productions · Editorial Excellence</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="openPopup('runway')"><span>Explore Collections</span></button>
+      <button class="btn-outline" onclick="document.getElementById('models').scrollIntoView({behavior:'smooth'})">Meet Our Models</button>
+    </div>
+  </div>
+  <div class="hero-image-col">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=85" alt="Eva Fashion Model" loading="eager"/>
+    </div>
+  </div>
+  <div class="hero-stat-strip">
+    <div class="stat-item"><div class="stat-num">320+</div><div class="stat-label">International Shows</div></div>
+    <div class="stat-item"><div class="stat-num">180+</div><div class="stat-label">Models Represented</div></div>
+    <div class="stat-item"><div class="stat-num">48</div><div class="stat-label">Countries Reached</div></div>
+    <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">Years of Excellence</div></div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <div class="scroll-text">Scroll</div>
+  </div>
+</section>
+
+<!-- ── TICKER ─────────────────────────────────────────────────────── -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">EVA FASHION</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">Paris Fashion Week 2025</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">Milan Runway Collection</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">New York International Show</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">Tokyo Street Couture</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">Dubai Luxury Exhibition</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">London Editorial Week</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">EVA FASHION</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">Paris Fashion Week 2025</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">Milan Runway Collection</span><span class="ticker-item ticker-sep">✦</span>
+    <span class="ticker-item">New York International Show</span><span class="ticker-item ticker-sep">✦</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ──────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-eyebrow reveal">Our Story</div>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Defining the Art of <em>Fashion</em> for a Generation</h2>
+      <div class="section-divider reveal" style="transition-delay:.2s"></div>
+      <div class="reveal" style="transition-delay:.3s">
+        <p>Founded in Paris in 2009, <strong>Eva Fashion</strong> was born from a singular vision: to create a modeling agency that transcended trends and celebrated the timeless art of fashion storytelling.</p>
+        <p>With a portfolio spanning <strong>over 320 international shows</strong> across six continents, we have built a reputation as the premier destination for brands seeking models who embody both beauty and character.</p>
+        <p>Our curated roster of talent — carefully selected for their unique presence, professional dedication, and versatility — has graced the runways of Paris, Milan, New York, Tokyo, and London.</p>
+        <div class="about-quote">
+          <blockquote>"Fashion is not about clothes. It is about confidence, identity, and the story you choose to tell the world."</blockquote>
+        </div>
+        <p style="font-size:11px;letter-spacing:1px;color:var(--ash);margin-top:8px">— Éva Laurent, Founder & Creative Director</p>
+      </div>
+      <div class="reveal" style="transition-delay:.5s;margin-top:32px">
+        <span class="gold-tag">Haute Couture</span>
+        <span class="gold-tag">Runway Production</span>
+        <span class="gold-tag">Editorial</span>
+        <span class="gold-tag">Commercial</span>
+        <span class="gold-tag">International</span>
+      </div>
+    </div>
+    <div class="about-image-mosaic reveal-right" style="transition-delay:.2s">
+      <div class="mosaic-img mosaic-1">
+        <img src="https://images.unsplash.com/photo-1566206091558-7f218b696731?w=600&q=80" alt="Fashion Show"/>
+      </div>
+      <div class="mosaic-img mosaic-2">
+        <img src="https://images.unsplash.com/photo-1536766820879-059fec98ec0a?w=600&q=80" alt="Runway"/>
+      </div>
+      <div class="mosaic-img mosaic-3">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80" alt="Model"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ────────────────────────────────────────────────────── -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-eyebrow reveal">What We Do</div>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Services of<br><em>Distinction</em></h2>
+    </div>
+    <p class="reveal" style="max-width:300px;font-size:12px;line-height:1.8;color:rgba(245,240,232,.45);letter-spacing:1px;transition-delay:.2s">From intimate editorial shoots to grand international runway productions — we deliver excellence at every scale.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal" onclick="openPopup('runway')">
+      <div class="service-tag">Live Production</div>
+      <div class="service-number">01</div>
+      <div class="service-name">Runway Shows</div>
+      <p class="service-desc">World-class runway productions that transform venues into immersive fashion experiences. From intimate presentations to stadium-scale spectacles.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.1s" onclick="openPopup('international')">
+      <div class="service-tag">Global Events</div>
+      <div class="service-number">02</div>
+      <div class="service-name">International Shows</div>
+      <p class="service-desc">Representing Eva Fashion on the global stage — Paris, Milan, New York, Tokyo, London, Dubai. Our international presence sets the standard.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.2s" onclick="openPopup('editorial')">
+      <div class="service-tag">Print & Digital</div>
+      <div class="service-number">03</div>
+      <div class="service-name">Editorial Campaigns</div>
+      <p class="service-desc">Groundbreaking editorial work that appears in the world's most prestigious fashion publications and digital platforms.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.3s">
+      <div class="service-tag">Talent</div>
+      <div class="service-number">04</div>
+      <div class="service-name">Model Management</div>
+      <p class="service-desc">Nurturing exceptional talent from discovery through to international stardom. Our models are more than beautiful — they are storytellers.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.4s">
+      <div class="service-tag">Brand Strategy</div>
+      <div class="service-number">05</div>
+      <div class="service-name">Brand Consulting</div>
+      <p class="service-desc">Strategic fashion consulting for luxury brands seeking to elevate their visual identity and reach the discerning global audience.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.5s" onclick="openPopup('casting')">
+      <div class="service-tag">Talent Search</div>
+      <div class="service-number">06</div>
+      <div class="service-name">Casting & Scouting</div>
+      <p class="service-desc">Our global scouting network discovers the faces of tomorrow. Comprehensive casting services for brands, designers, and productions worldwide.</p>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── UPCOMING SHOWS ──────────────────────────────────────────────── -->
+<section id="shows">
+  <div class="shows-intro">
+    <div class="section-eyebrow reveal">Upcoming Events</div>
+    <h2 class="section-title reveal" style="transition-delay:.1s">The Season's<br><em>Most Anticipated</em> Shows</h2>
+    <div class="section-divider reveal" style="transition-delay:.2s"></div>
+    <p class="reveal" style="transition-delay:.3s;font-size:13px;line-height:1.9;color:rgba(245,240,232,.55)">Step into a world where fashion becomes art. Our upcoming season promises an unforgettable series of runway experiences and international spectacles.</p>
+  </div>
+  <div class="shows-grid">
+    <div class="show-card show-card-large reveal" onclick="openPopup('runway')">
+      <img class="show-card-img" src="https://images.unsplash.com/photo-1558171813-9e82a42e4b36?w=1200&q=80" alt="Paris Runway Show"/>
+      <div class="show-card-overlay"></div>
+      <div class="show-card-content">
+        <div class="show-badge">Upcoming · Paris</div>
+        <div class="show-title">La Grande Scène<br>de la Mode</div>
+        <div class="show-meta">Paris Fashion Week · February 2025 · Grand Palais</div>
+        <p class="show-desc">The most anticipated runway show of the season — a celebration of Haute Couture at the iconic Grand Palais. 45 looks, 22 designers, one unforgettable evening.</p>
+        <div class="show-cta">Reserve Your Seat <span>→</span></div>
+      </div>
+    </div>
+    <div class="show-card reveal" style="transition-delay:.1s" onclick="openPopup('international')">
+      <img class="show-card-img" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Milan Show"/>
+      <div class="show-card-overlay"></div>
+      <div class="show-card-content">
+        <div class="show-badge">Upcoming · Milan</div>
+        <div class="show-title">Settimana della Moda</div>
+        <div class="show-meta">Milan · March 2025 · Palazzo della Moda</div>
+        <p class="show-desc">Eva Fashion returns to Milan with an extraordinary collection celebrating Italian craftsmanship and contemporary vision.</p>
+        <div class="show-cta">Learn More <span>→</span></div>
+      </div>
+    </div>
+    <div class="show-card reveal" style="transition-delay:.2s" onclick="openPopup('international')">
+      <img class="show-card-img" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80" alt="New York Show"/>
+      <div class="show-card-overlay"></div>
+      <div class="show-card-content">
+        <div class="show-badge">Upcoming · New York</div>
+        <div class="show-title">New York Fashion Week</div>
+        <div class="show-meta">NYFW · September 2025 · Lincoln Center</div>
+        <p class="show-desc">The energy of New York City channeled through fashion. Our NYFW showcase promises innovation, diversity, and unparalleled style.</p>
+        <div class="show-cta">Learn More <span>→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CATWALK STRIP ────────────────────────────────────────────────── -->
+<div id="catwalk">
+  <div class="catwalk-track">
+    <span class="catwalk-item">HAUTE COUTURE</span>
+    <span class="catwalk-item highlight">Eva Fashion</span>
+    <span class="catwalk-item">PRÊT-À-PORTER</span>
+    <span class="catwalk-item">RUNWAY</span>
+    <span class="catwalk-item highlight">Editorial</span>
+    <span class="catwalk-item">INTERNATIONAL</span>
+    <span class="catwalk-item">MILAN</span>
+    <span class="catwalk-item highlight">Paris</span>
+    <span class="catwalk-item">NEW YORK</span>
+    <span class="catwalk-item">TOKYO</span>
+    <span class="catwalk-item highlight">Eva Fashion</span>
+    <span class="catwalk-item">HAUTE COUTURE</span>
+    <span class="catwalk-item">PRÊT-À-PORTER</span>
+    <span class="catwalk-item">RUNWAY</span>
+    <span class="catwalk-item highlight">Editorial</span>
+    <span class="catwalk-item">INTERNATIONAL</span>
+  </div>
+</div>
+
+<!-- ── MODELS ─────────────────────────────────────────────────────── -->
+<section id="models">
+  <div class="models-intro">
+    <div>
+      <div class="section-eyebrow reveal">Our Talent</div>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Faces That<br>Define <em>Generations</em></h2>
+      <div class="section-divider reveal" style="transition-delay:.2s"></div>
+    </div>
+    <div class="reveal reveal-right" style="transition-delay:.3s">
+      <p style="font-size:13px;line-height:1.9;color:rgba(245,240,232,.55);margin-bottom:24px">Every Eva Fashion model is chosen not just for their aesthetic beauty, but for their ability to embody a story — to become the living, breathing expression of a designer's vision.</p>
+      <button class="btn-outline" onclick="openPopup('casting')">Join Our Roster</button>
+    </div>
+  </div>
+  <div class="models-slider">
+    <div class="model-card reveal">
+      <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80" alt="Model Isabelle"/>
+      <div class="model-overlay"></div>
+      <div class="model-info">
+        <div class="model-name">Isabelle Roux</div>
+        <div class="model-title">Senior Model · Paris</div>
+        <div class="model-stats">
+          <span class="model-stat">180 cm</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">EU 36</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">5 Years</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-card reveal" style="transition-delay:.1s">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&q=80" alt="Model Sofia"/>
+      <div class="model-overlay"></div>
+      <div class="model-info">
+        <div class="model-name">Sofia Marchetti</div>
+        <div class="model-title">International Model · Milan</div>
+        <div class="model-stats">
+          <span class="model-stat">177 cm</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">EU 34</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">3 Years</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-card reveal" style="transition-delay:.2s">
+      <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=500&q=80" alt="Model Amara"/>
+      <div class="model-overlay"></div>
+      <div class="model-info">
+        <div class="model-name">Amara Okafor</div>
+        <div class="model-title">Rising Star · London</div>
+        <div class="model-stats">
+          <span class="model-stat">182 cm</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">EU 38</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">2 Years</span>
+        </div>
+      </div>
+    </div>
+    <div class="model-card reveal" style="transition-delay:.3s">
+      <img src="https://images.unsplash.com/photo-1503185912284-5271ff81b9a8?w=500&q=80" alt="Model Yuki"/>
+      <div class="model-overlay"></div>
+      <div class="model-info">
+        <div class="model-name">Yuki Tanaka</div>
+        <div class="model-title">Elite Model · Tokyo</div>
+        <div class="model-stats">
+          <span class="model-stat">174 cm</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">EU 32</span>
+          <span class="model-stat">·</span>
+          <span class="model-stat">4 Years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ────────────────────────────────────────────────────── -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-eyebrow reveal">Portfolio</div>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Visual <em>Stories</em></h2>
+    </div>
+    <button class="btn-outline reveal" style="transition-delay:.2s">View Full Portfolio</button>
+  </div>
+  <div class="gallery-masonry">
+    <div class="gallery-item reveal" style="height:350px">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80" alt="Gallery 1" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Paris FW 2024</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:170px;transition-delay:.05s">
+      <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=400&q=80" alt="Gallery 2" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Editorial · Vogue</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:170px;transition-delay:.1s">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Gallery 3" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">NYFW 2024</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:290px;transition-delay:.15s">
+      <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=700&q=80" alt="Gallery 4" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Milan · Spring Collection</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:290px;transition-delay:.2s">
+      <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80" alt="Gallery 5" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">London Street Style</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:170px;transition-delay:.25s">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80" alt="Gallery 6" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Campaign · Luxe Brand</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:350px;transition-delay:.3s">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Gallery 7" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Tokyo Fashion Week</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:170px;transition-delay:.35s">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80" alt="Gallery 8" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Dubai Luxury Show</div></div>
+    </div>
+    <div class="gallery-item reveal" style="height:170px;transition-delay:.4s">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=700&q=80" alt="Gallery 9" loading="lazy"/>
+      <div class="gallery-caption"><div class="gallery-caption-text">Editorial Campaign</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRESS ──────────────────────────────────────────────────────── -->
+<section id="press">
+  <div class="section-eyebrow reveal">As Seen In</div>
+  <div class="press-logos reveal" style="transition-delay:.1s">
+    <div class="press-logo">Vogue</div>
+    <div class="press-logo">Harper's</div>
+    <div class="press-logo">Elle</div>
+    <div class="press-logo">W Magazine</div>
+    <div class="press-logo">Bazaar</div>
+    <div class="press-logo">Dazed</div>
+  </div>
+  <div class="section-eyebrow reveal" style="margin-top:0">What They Say</div>
+  <h2 class="section-title reveal" style="transition-delay:.1s;margin-bottom:50px">Words of <em>Recognition</em></h2>
+  <div class="testimonials">
+    <div class="testimonial reveal">
+      <p class="testimonial-text">"Eva Fashion doesn't just produce shows — they create cultural moments. Working with them was an absolute privilege for our brand's debut runway presentation."</p>
+      <div class="testimonial-author">Maison Delacroix</div>
+      <div class="testimonial-role">Creative Director, Paris</div>
+    </div>
+    <div class="testimonial reveal" style="transition-delay:.1s">
+      <p class="testimonial-text">"The precision, the artistry, the absolute commitment to excellence. Eva Fashion represents the gold standard of international modeling agencies."</p>
+      <div class="testimonial-author">Aurelio Romano</div>
+      <div class="testimonial-role">Fashion Editor, Vogue Italia</div>
+    </div>
+    <div class="testimonial reveal" style="transition-delay:.2s">
+      <p class="testimonial-text">"From scouting to the final walk, every detail is managed with extraordinary care. Eva Fashion's models carry themselves with a rare combination of grace and power."</p>
+      <div class="testimonial-author">Christine Beaumont</div>
+      <div class="testimonial-role">Show Director, NYFW</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-eyebrow reveal">Get In Touch</div>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Let's Create<br>Something <em>Extraordinary</em></h2>
+      <div class="section-divider reveal" style="transition-delay:.2s"></div>
+      <a href="mailto:hello@evafashion.com" class="big-email reveal" style="transition-delay:.3s">hello@evafashion.com</a>
+      <div class="reveal" style="transition-delay:.4s">
+        <div class="contact-detail">
+          <div class="contact-detail-label">Paris</div>
+          <div class="contact-detail-value">14 Rue de la Paix<br>75001 Paris, France<br><span style="color:var(--ash);font-size:12px">+33 1 42 44 00 00</span></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Milan</div>
+          <div class="contact-detail-value">Via Montenapoleone 12<br>20121 Milano, Italy<br><span style="color:var(--ash);font-size:12px">+39 02 7600 0000</span></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">New York</div>
+          <div class="contact-detail-value">545 Fifth Avenue, Suite 1400<br>New York, NY 10017<br><span style="color:var(--ash);font-size:12px">+1 212 000 0000</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal-right" style="transition-delay:.2s">
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" placeholder=" " id="fname" required/>
+            <label class="form-label">First Name</label>
+            <span class="form-line"></span>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder=" " id="lname" required/>
+            <label class="form-label">Last Name</label>
+            <span class="form-line"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder=" " id="email" required/>
+          <label class="form-label">Email Address</label>
+          <span class="form-line"></span>
+        </div>
+        <div class="form-group">
+          <select id="inquiry" required style="color:rgba(245,240,232,.7)">
+            <option value="" disabled selected>Select Inquiry Type</option>
+            <option value="booking">Book a Runway Show</option>
+            <option value="model">Model Representation</option>
+            <option value="editorial">Editorial Campaign</option>
+            <option value="international">International Show</option>
+            <option value="casting">Casting & Scouting</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="form-line"></span>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Tell us about your vision…" id="message"></textarea>
+          <span class="form-line"></span>
+        </div>
+        <button type="submit" class="submit-btn"><span>Send Message →</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text">Eva<span>.</span> Fashion</div>
+      <p class="footer-tagline">Where Elegance Meets Vision.<br>International Fashion Modeling Agency.<br>Paris · Milan · New York · Tokyo · London</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#models">Our Models</a></li>
+        <li><a href="#shows">Shows & Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Runway Shows</a></li>
+        <li><a href="#">International Shows</a></li>
+        <li><a href="#">Editorial Campaigns</a></li>
+        <li><a href="#">Model Management</a></li>
+        <li><a href="#">Brand Consulting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Model Agreement</a></li>
+        <li><a href="#">Press Kit</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Eva Fashion. All rights reserved. Est. Paris, 2009.</span>
+    <span>Crafted with precision · Delivered with excellence</span>
+  </div>
+</footer>
+
+<!-- ── AD POPUP: RUNWAY ────────────────────────────────────────────── -->
+<div class="popup-overlay" id="popup-runway">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('runway')">✕</button>
+    <div class="popup-content">
+      <div class="popup-image">
+        <img src="https://images.unsplash.com/photo-1558171813-9e82a42e4b36?w=800&q=85" alt="Runway Show"/>
+      </div>
+      <div class="popup-body">
+        <div class="popup-badge"><span class="popup-badge-dot"></span>LIVE EVENT · PARIS 2025</div>
+        <div class="popup-title">La Grande Scène<br><em>de la Mode</em></div>
+        <div class="popup-subtitle">Paris Fashion Week · Grand Palais · February 2025</div>
+
+        <div class="popup-countdown" id="countdown-runway">
+          <div class="countdown-unit"><span class="countdown-num" id="cd-days">47</span><span class="countdown-label">Days</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-hours">12</span><span class="countdown-label">Hours</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-mins">38</span><span class="countdown-label">Minutes</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Seconds</span></div>
+        </div>
+
+        <p class="popup-desc">Eva Fashion presents its most ambitious runway production yet — 45 breathtaking looks from 22 visionary designers, staged beneath the magnificent dome of the Grand Palais. An evening that will define the season.</p>
+
+        <div class="popup-details">
+          <div class="popup-detail-item"><div class="popup-detail-label">Venue</div><div class="popup-detail-value">Grand Palais, Paris</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Date</div><div class="popup-detail-value">February 28, 2025</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Designers</div><div class="popup-detail-value">22 International</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Capacity</div><div class="popup-detail-value">Limited · 450 Seats</div></div>
+        </div>
+
+        <div class="popup-ctas">
+          <button class="popup-cta-primary" onclick="closePopup('runway');document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Reserve Seat</button>
+          <button class="popup-cta-outline" onclick="closePopup('runway')">View Programme</button>
+        </div>
+        <div class="popup-skip" onclick="closePopup('runway')">Skip for now</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AD POPUP: INTERNATIONAL ────────────────────────────────────── -->
+<div class="popup-overlay" id="popup-international">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('international')">✕</button>
+    <div class="popup-content">
+      <div class="popup-image">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85" alt="International Show"/>
+      </div>
+      <div class="popup-body">
+        <div class="popup-badge"><span class="popup-badge-dot"></span>INTERNATIONAL · 6 CITIES</div>
+        <div class="popup-title">The World<br><em>Tour 2025</em></div>
+        <div class="popup-subtitle">Milan · Tokyo · Dubai · New York · London · Mumbai</div>
+
+        <div class="popup-tabs">
+          <button class="popup-tab active" onclick="switchTab(this,'milan')">Milan</button>
+          <button class="popup-tab" onclick="switchTab(this,'tokyo')">Tokyo</button>
+          <button class="popup-tab" onclick="switchTab(this,'dubai')">Dubai</button>
+          <button class="popup-tab" onclick="switchTab(this,'nyc')">New York</button>
+        </div>
+
+        <div class="popup-tab-content active" id="tab-milan">
+          <p class="popup-desc">Settimana della Moda — Eva Fashion returns to Milan with a spectacular Spring/Summer collection at Palazzo della Moda. 32 looks exploring the intersection of Italian heritage and global futures.</p>
+          <div class="popup-details">
+            <div class="popup-detail-item"><div class="popup-detail-label">Date</div><div class="popup-detail-value">March 14, 2025</div></div>
+            <div class="popup-detail-item"><div class="popup-detail-label">Venue</div><div class="popup-detail-value">Palazzo della Moda</div></div>
+          </div>
+        </div>
+        <div class="popup-tab-content" id="tab-tokyo">
+          <p class="popup-desc">Tokyo Street Couture — Where Eastern minimalism meets Western grandeur. A landmark collaboration with seven of Japan's most celebrated designers.</p>
+          <div class="popup-details">
+            <div class="popup-detail-item"><div class="popup-detail-label">Date</div><div class="popup-detail-value">April 3, 2025</div></div>
+            <div class="popup-detail-item"><div class="popup-detail-label">Venue</div><div class="popup-detail-value">Shibuya Grand Hall</div></div>
+          </div>
+        </div>
+        <div class="popup-tab-content" id="tab-dubai">
+          <p class="popup-desc">Dubai Luxury Exhibition — The ultimate celebration of opulence. Eva Fashion presents its most lavish collection against the glittering backdrop of the Dubai skyline.</p>
+          <div class="popup-details">
+            <div class="popup-detail-item"><div class="popup-detail-label">Date</div><div class="popup-detail-value">May 20, 2025</div></div>
+            <div class="popup-detail-item"><div class="popup-detail-label">Venue</div><div class="popup-detail-value">Burj Al Arab Terrace</div></div>
+          </div>
+        </div>
+        <div class="popup-tab-content" id="tab-nyc">
+          <p class="popup-desc">New York Fashion Week — The energy of Manhattan channeled through fashion. Lincoln Center becomes a stage for the next generation of global talent.</p>
+          <div class="popup-details">
+            <div class="popup-detail-item"><div class="popup-detail-label">Date</div><div class="popup-detail-value">September 8, 2025</div></div>
+            <div class="popup-detail-item"><div class="popup-detail-label">Venue</div><div class="popup-detail-value">Lincoln Center, NY</div></div>
+          </div>
+        </div>
+
+        <div class="popup-ctas">
+          <button class="popup-cta-primary" onclick="closePopup('international');document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Register Interest</button>
+          <button class="popup-cta-outline" onclick="closePopup('international')">Full Schedule</button>
+        </div>
+        <div class="popup-skip" onclick="closePopup('international')">Skip for now</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AD POPUP: EDITORIAL ────────────────────────────────────────── -->
+<div class="popup-overlay" id="popup-editorial">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('editorial')">✕</button>
+    <div class="popup-content">
+      <div class="popup-image">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=85" alt="Editorial"/>
+      </div>
+      <div class="popup-body">
+        <div class="popup-badge"><span class="popup-badge-dot"></span>EDITORIAL · PRINT & DIGITAL</div>
+        <div class="popup-title">The Art of<br><em>the Image</em></div>
+        <div class="popup-subtitle">Campaigns That Define Culture</div>
+        <p class="popup-desc">Eva Fashion's editorial division has produced campaigns for the world's most prestigious fashion houses. Our models have graced the covers of Vogue, Harper's Bazaar, Elle, and W Magazine across 28 countries.</p>
+        <div class="popup-details">
+          <div class="popup-detail-item"><div class="popup-detail-label">Publications</div><div class="popup-detail-value">60+ International</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Campaigns</div><div class="popup-detail-value">240+ Per Year</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Photographers</div><div class="popup-detail-value">35 Elite Roster</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Availability</div><div class="popup-detail-value">Spring 2025 Open</div></div>
+        </div>
+        <div class="popup-ctas">
+          <button class="popup-cta-primary" onclick="closePopup('editorial');document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Campaign</button>
+          <button class="popup-cta-outline" onclick="closePopup('editorial')">View Portfolio</button>
+        </div>
+        <div class="popup-skip" onclick="closePopup('editorial')">Skip for now</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AD POPUP: CASTING ─────────────────────────────────────────── -->
+<div class="popup-overlay" id="popup-casting">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('casting')">✕</button>
+    <div class="popup-content">
+      <div class="popup-image">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=85" alt="Casting"/>
+      </div>
+      <div class="popup-body">
+        <div class="popup-badge"><span class="popup-badge-dot"></span>NOW CASTING · 2025 SEASON</div>
+        <div class="popup-title">Your Face<br><em>Our Stage</em></div>
+        <div class="popup-subtitle">Open Casting Call · Paris & Global</div>
+        <p class="popup-desc">Eva Fashion is actively scouting exceptional talent for our 2025 international season. We seek individuals with presence, passion, and the dedication to pursue a career at the highest levels of the fashion industry.</p>
+        <div class="popup-details">
+          <div class="popup-detail-item"><div class="popup-detail-label">Age Range</div><div class="popup-detail-value">16 – 30 Years</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Height</div><div class="popup-detail-value">170+ cm (Women)</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Experience</div><div class="popup-detail-value">Not Required</div></div>
+          <div class="popup-detail-item"><div class="popup-detail-label">Next Open Day</div><div class="popup-detail-value">Jan 25, Paris</div></div>
+        </div>
+        <div class="popup-ctas">
+          <button class="popup-cta-primary" onclick="closePopup('casting');document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Apply Now</button>
+          <button class="popup-cta-outline" onclick="closePopup('casting')">Learn More</button>
+        </div>
+        <div class="popup-skip" onclick="closePopup('casting')">Skip for now</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FLOATING AD ────────────────────────────────────────────────── -->
+<div class="float-ad float-ad-right" id="floatAd">
+  <button class="float-ad-close" onclick="document.getElementById('floatAd').style.display='none'">✕</button>
+  <div class="float-ad-badge">Live Now · Casting Open</div>
+  <div class="float-ad-title">Join Eva Fashion</div>
+  <div class="float-ad-sub">2025 International Season · Open Casting · Paris, Milan & London</div>
+  <img class="float-ad-img" src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=75" alt="Model"/>
+  <button class="float-ad-cta" onclick="document.getElementById('floatAd').style.display='none';openPopup('casting')">Apply to Join →</button>
+</div>
+
+<script>
+// ── Custom Cursor ─────────────────────────────────────────────
+const dot  = document.getElementById('cursorDot')
+const ring = document.getElementById('cursorRing')
+let mx = 0, my = 0, rx = 0, ry = 0
+
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY })
+document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0' })
+document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1' })
+
+function animCursor() {
+  dot.style.left  = mx + 'px'
+  dot.style.top   = my + 'px'
+  rx += (mx - rx) * .12
+  ry += (my - ry) * .12
+  ring.style.left = rx + 'px'
+  ring.style.top  = ry + 'px'
+  requestAnimationFrame(animCursor)
+}
+animCursor()
+
+document.querySelectorAll('a,button,.show-card,.model-card,.gallery-item,.service-card,.nav-btn,.mosaic-img').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hovered'))
+  el.addEventListener('mouseleave', () => ring.classList.remove('hovered'))
+})
+
+// ── Scroll Animations ─────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target) } })
+}, { threshold: .1, rootMargin: '0px 0px -50px 0px' })
+
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => observer.observe(el))
+
+// ── Nav scroll ────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60)
+})
+
+// ── Popup System ──────────────────────────────────────────────
+let popupQueue = ['runway','international']
+let queueIndex = 0
+let popupShown = {}
+
+function openPopup(id) {
+  document.querySelectorAll('.popup-overlay').forEach(p => { p.classList.remove('active') })
+  const el = document.getElementById('popup-' + id)
+  if (el) {
+    el.classList.add('active')
+    popupShown[id] = true
+    if (id === 'runway') startCountdown()
+    document.body.style.overflow = 'hidden'
+  }
+}
+
+function closePopup(id) {
+  const el = document.getElementById('popup-' + id)
+  if (el) { el.classList.remove('active'); document.body.style.overflow = '' }
+}
+
+document.querySelectorAll('.popup-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) {
+      const id = overlay.id.replace('popup-','')
+      closePopup(id)
+    }
+  })
+})
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.popup-overlay.active').forEach(p => {
+      p.classList.remove('active')
+      document.body.style.overflow = ''
+    })
+  }
+})
+
+// ── Auto popup on load ─────────────────────────────────────────
+let autoPopupIndex = 0
+const autoPopups = ['runway','international']
+
+function triggerNextPopup() {
+  if (autoPopupIndex < autoPopups.length) {
+    openPopup(autoPopups[autoPopupIndex])
+  }
+}
+
+// First popup after 2.5s, next after close
+setTimeout(triggerNextPopup, 2500)
+
+// Override close to trigger next
+const originalClose = closePopup
+window.closePopup = function(id) {
+  const el = document.getElementById('popup-' + id)
+  if (el) { el.classList.remove('active'); document.body.style.overflow = '' }
+  // Queue next popup
+  const idx = autoPopups.indexOf(id)
+  if (idx >= 0 && idx === autoPopupIndex && autoPopupIndex < autoPopups.length - 1) {
+    autoPopupIndex++
+    setTimeout(triggerNextPopup, 8000)
+  }
+}
+
+// ── Popup Tabs ────────────────────────────────────────────────
+function switchTab(btn, id) {
+  const box = btn.closest('.popup-box')
+  box.querySelectorAll('.popup-tab').forEach(t => t.classList.remove('active'))
+  box.querySelectorAll('.popup-tab-content').forEach(t => t.classList.remove('active'))
+  btn.classList.add('active')
+  const content = box.querySelector('#tab-' + id)
+  if (content) content.classList.add('active')
+}
+
+// ── Countdown ─────────────────────────────────────────────────
+function startCountdown() {
+  const target = new Date()
+  target.setDate(target.getDate() + 47)
+  target.setHours(target.getHours() + 12)
+  target.setMinutes(target.getMinutes() + 38)
+
+  function update() {
+    const now  = new Date()
+    const diff = target - now
+    if (diff <= 0) return
+    const d = Math.floor(diff / 86400000)
+    const h = Math.floor((diff % 86400000) / 3600000)
+    const m = Math.floor((diff % 3600000) / 60000)
+    const s = Math.floor((diff % 60000) / 1000)
+    const dEl = document.getElementById('cd-days')
+    const hEl = document.getElementById('cd-hours')
+    const mEl = document.getElementById('cd-mins')
+    const sEl = document.getElementById('cd-secs')
+    if (dEl) dEl.textContent = String(d).padStart(2,'0')
+    if (hEl) hEl.textContent = String(h).padStart(2,'0')
+    if (mEl) mEl.textContent = String(m).padStart(2,'0')
+    if (sEl) sEl.textContent = String(s).padStart(2,'0')
+  }
+  update()
+  setInterval(update, 1000)
+}
+
+// ── Show popup when scrolling to shows section ─────────────────
+let showsPopupTriggered = false
+const showsSection = document.getElementById('shows')
+const showsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !showsPopupTriggered && !document.querySelector('.popup-overlay.active')) {
+      showsPopupTriggered = true
+      setTimeout(() => {
+        if (!document.querySelector('.popup-overlay.active')) openPopup('international')
+      }, 1200)
+    }
+  })
+}, { threshold: .5 })
+if (showsSection) showsObserver.observe(showsSection)
+
+// ── Show casting popup when scrolling to models ─────────────────
+let modelsPopupTriggered = false
+const modelsSection = document.getElementById('models')
+const modelsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !modelsPopupTriggered && !document.querySelector('.popup-overlay.active')) {
+      modelsPopupTriggered = true
+      setTimeout(() => {
+        if (!document.querySelector('.popup-overlay.active')) openPopup('casting')
+      }, 2000)
+    }
+  })
+}, { threshold: .4 })
+if (modelsSection) modelsObserver.observe(modelsSection)
+
+// ── Form submit ───────────────────────────────────────────────
+function handleFormSubmit(e) {
+  e.preventDefault()
+  const btn = e.target.querySelector('.submit-btn')
+  const orig = btn.innerHTML
+  btn.innerHTML = '<span>Sending…</span>'
+  btn.disabled = true
+  setTimeout(() => {
+    btn.innerHTML = '<span>Message Sent ✓</span>'
+    btn.style.background = 'rgba(201,168,76,.2)'
+    btn.style.borderColor = 'var(--gold)'
+    btn.style.color = 'var(--gold)'
+    e.target.reset()
+    setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; btn.style = '' }, 3000)
+  }, 1800)
+}
+
+// ── Hover effect on hover elements ───────────────────────────
+document.querySelectorAll('.gallery-item,.service-card,.show-card,.model-card').forEach(el => {
+  el.style.cursor = 'none'
+})
+
+// ── Float ad re-trigger ───────────────────────────────────────
+let floatTrigger = 0
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight)
+  if (pct > .6 && floatTrigger === 0) {
+    floatTrigger = 1
+    const ad = document.getElementById('floatAd')
+    if (ad) { ad.style.display = 'block' }
+  }
+})
+
+console.log('%c EVA FASHION ', 'background:#C9A84C;color:#0A0806;font-size:16px;font-weight:bold;padding:6px 16px;', '\nWhere Elegance Meets Vision · est. Paris 2009')
+</script>
+</body>
+</html>
